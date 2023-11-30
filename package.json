@@ -1,0 +1,15 @@
+{
+  "name": "ruby_rpg",
+  "version": "1.0.0",
+  "description": "遙かなる未来への旅立ち Departure to the Far Far Away Future - 血湧き肉踊る大冒険 - - 失われし伝説を求めて -",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zenn-cli": "^0.1.150"
+  }
+}
