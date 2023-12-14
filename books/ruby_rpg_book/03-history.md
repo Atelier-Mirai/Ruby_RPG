@@ -1,5 +1,5 @@
 ---
-title: "第二章 コンピュータの歴史"
+title: "第三章 コンピュータの仕組み"
 free: true
 published: true # falseだと下書き
 published_at: 2023-12-07 06:00
