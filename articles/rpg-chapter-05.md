@@ -58,6 +58,7 @@ system "clear"
 
 https://github.com/Atelier-Mirai/Ruby_RPG/blob/master/rpg/rpg01.rb
 
+https://github.com/Atelier-Mirai/Ruby_RPG/blob/7ed1c91c5a05ecbbab4f0f0337bd71f8a5bd6782/rpg/rpg01.rb
 
 ### ううう
 本文
