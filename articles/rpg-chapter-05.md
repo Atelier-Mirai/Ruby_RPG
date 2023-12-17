@@ -65,5 +65,10 @@ https://github.com/Atelier-Mirai/Ruby_RPG/blob/master/README.md
 # コードの開始行のみ指定
 https://github.com/octocat/Spoon-Knife/blob/main/README.md#L3
 
+# コードall
+https://github.com/octocat/Spoon-Knife/blob/main/README.md
+
+https://github.com/Atelier-Mirai/Ruby_RPG/blob/master/README.md
+
 ### ううう
 本文
