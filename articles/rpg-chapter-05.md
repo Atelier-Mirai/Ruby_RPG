@@ -54,6 +54,8 @@ system "tput civis"
 system "clear"
 ```
 
+# コードの開始行と終了行を指定
+
 https://github.com/Atelier-Mirai/Ruby_RPG/blob/master/rpg/rpg01.rb
 
 
