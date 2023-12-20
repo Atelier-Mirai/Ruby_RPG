@@ -6,6 +6,10 @@ system "clear"
 # オープニング画面
 puts "遙かなる未来への旅立ち"
 puts "--- 失われし伝説を求めて ---"
+puts
+puts "HIT ANY KEY to Start"
+gets
+system "clear"
 
 # 戦闘シーン
 puts "スライムが現れた" # puts は、文字を表示する
