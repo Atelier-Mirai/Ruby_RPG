@@ -1,6 +1,9 @@
+# カーソルを消す
 system "tput civis"
+# 画面の文字を消す
 system "clear"
 
+# オープニング画面
 puts <<~OPENING
   遙かなる未来への旅立ち
   --- 失われし伝説を求めて ---
@@ -8,45 +11,52 @@ puts <<~OPENING
   HIT ANY KEY to Start
 OPENING
 gets
-
 system "clear"
 
-# スライムのＨＰを設定する
+# スライムのHPと最大HPを設定する
 max_hp = 10 + rand(0..2)
 hp     = max_hp
-# 勇者のＨＰを設定する
+
+# 勇者のHPと最大HPを設定する
 yusha_max_hp = 10 + rand(0..2)
 yusha_hp     = yusha_max_hp
-puts "スライムが現れた"
 
-# スライムの活気度メソッド（関数）
-def liveliness(hp, max_hp)
-  case (hp.to_r / max_hp.to_r) * 100
+# 戦闘シーン
+puts "スライムが現れた" # puts は、文字を表示する
+gets                    # gets は、キーボードからの入力を受け取る
+system "clear"
+
+# スライムの活気度を表示するメソッド（関数）
+def puts_liveliness(hp, max_hp)
+  liveliness = (hp.to_r / max_hp.to_r) * 100
+  case liveliness
   when 70..100
-    "スライムはぴんぴんしている"
+    puts "スライムはピンピンしている"
   when 30..70
-    "スライムは弱っている"
+    puts "スライムは弱ってきている"
   else
-    "スライムは死にかけている"
+    puts "スライムは死にそうだ"
   end
 end
 
-
+# 定数の定義
 ATTACK = 0
 SPELL  = 1
 ESCAPE = 2
 
+# 倒すまで繰り返す
 loop do
+  # 大域脱出
   command = catch(:exit) do
     command = 0
     loop do
-      puts liveliness(hp, max_hp)
-
+      # スライムの活気度
+      puts_liveliness(hp, max_hp)
       puts <<~SLIME
         　／　＼
         ／・Д・＼
         〜〜〜〜〜
-        スライム ＨＰ：#{hp}
+        ＨＰ：#{hp}
       SLIME
 
       # # コマンドを表示する
@@ -101,37 +111,37 @@ loop do
     gets
     damage = rand(1..6)
     puts "スライムに#{damage}ポイントのダメージを与えた"
+    hp -= damage
     gets
-    hp = hp - damage
-    if hp <= 0
-      break # 繰り返しを抜ける
-    end
+    system "clear"
+    # 繰り返しを抜ける
+    break if hp <= 0
   when SPELL
     puts "勇者は回復呪文を唱えた"
     gets
     heal = rand(1..6)
     puts "勇者のＨＰが#{heal}ポイント回復した"
     gets
-    yusha_hp = yusha_hp + heal
+    yusha_hp += heal
   when ESCAPE
     puts "勇者は逃げ出した"
     break # 繰り返しを抜ける
   end
 
   puts "スライムの攻撃"
+  gets
   damage = rand(1..6)
   puts "勇者は#{damage}ポイントのダメージを負った"
-  yusha_hp = yusha_hp - damage
+  yusha_hp -= damage
   puts "勇者 ＨＰ：#{yusha_hp}"
 
   gets
   system "clear"
-
-  if yusha_hp <= 0
-    break # 繰り返しを抜ける
-  end
+  # 繰り返しを抜ける
+  break if yusha_hp <= 0
 end
 
+# 戦闘終了時のメッセージ
 if hp <= 0
   puts "スライムを倒した"
   gets
@@ -140,4 +150,5 @@ elsif yusha_hp <= 0
   gets
 else
   puts "勇者は無事に脱出できた"
+  gets
 end

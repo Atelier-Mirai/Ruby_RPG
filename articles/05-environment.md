@@ -1,5 +1,5 @@
 ---
-title: "Ruby で創る RPG"
+title: "Ruby で創る RPG 第五章 開発環境を整える"
 emoji: "🍇"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Ruby", "初心者", "コンピュータ", "計算機科学", "プログラミング"]
@@ -27,7 +27,8 @@ published_at: 2023-12-21 06:00
 まず、アプリケーション ＞ ユーティリティ とたどって、その中にあるターミナルアプリを開きましょう。ターミナルアプリを起動したら、[Homebrew](https://brew.sh/ja/) をインストールするわ。[^1]
 
 ``` zsh
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
+l/HEAD/install.sh)"
 ```
 
 Homebrew がインストールできたら、rbenv [^2] をインストールしましょう。
@@ -36,13 +37,13 @@ Homebrew がインストールできたら、rbenv [^2] をインストールし
 $ brew install rbenv
 ```
 
-最後に `rbenv install 3.2.2` とコマンド入力すると `Ruby` をインストールできます。 [^3]
+最後に `rbenv install 3.3.0` とコマンド入力すると `Ruby` をインストールできます。 [^3]
 
 ``` zsh
-$ rbenv install 3.2.2
+$ rbenv install 3.3.0
 ```
 
-次に `brew install rbenv` とコマンド入力すると `rbenv` をインストールできます。 最後に `rbenv install 3.2.2` とコマンド入力すると `Ruby` をインストールできます。 [^3]
+次に `brew install rbenv` とコマンド入力すると `rbenv` をインストールできます。 最後に `rbenv install 3.3.0` とコマンド入力すると `Ruby` をインストールできます。 [^3]
 
 [^1]: `Homebrew`は、プログラミングのためのさまざまなツールをインストールできるソフトだよ。
 
