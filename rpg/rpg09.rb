@@ -41,7 +41,7 @@ end
 
 # 定数の定義
 ATTACK = 0
-SPELL  = 1
+HEAL   = 1
 ESCAPE = 2
 
 # 倒すまで繰り返す
