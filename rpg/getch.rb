@@ -1,4 +1,4 @@
 require "io/console"
-while (key = STDIN.getch) != "\C-c"
-  puts "#{key.inspect} キーが押されました。"
-end
+key = STDIN.getch.to_i
+puts "#{key.inspect} キーが押されました。"
+puts "#{key} キーが押されました。"

@@ -40,71 +40,34 @@ def puts_liveliness(hp, max_hp)
 end
 
 # 定数の定義
-ATTACK = 0
-HEAL   = 1
-ESCAPE = 2
+ATTACK = 1
+HEAL   = 2
+ESCAPE = 3
 
 # 倒すまで繰り返す
 loop do
-  # 大域脱出
-  command = catch(:exit) do
-    command = 0
-    loop do
-      # スライムの活気度
-      puts_liveliness(hp, max_hp)
-      puts <<~SLIME
-        　／　＼
-        ／・Д・＼
-        〜〜〜〜〜
-        ＨＰ：#{hp}
-      SLIME
+  # スライムの活気度
+  puts_liveliness(hp, max_hp)
 
-      # # コマンドを表示する
-      # menus = ["戦う", "呪文", "逃げる"]
-      # puts menus[0]
-      # puts menus[1]
-      # puts menus[2]
-      # # if command == 0
-      # #   print "＞"
-      # # else
-      # #   print "　"
-      # # end
-      # # puts menus[command]
+  puts <<~SLIME
+    　／　＼
+    ／・Д・＼
+    〜〜〜〜〜
+    ＨＰ：#{hp}
+  SLIME
+  gets
 
-      puts
-      menus = ["攻撃", "呪文", "逃走"]
-      # menus.each do |menu|
-      #   puts menu
-      # end
-      menus.each_with_index do |menu, index|
-        # if index == command
-        #   print "＞"
-        # else
-        #   print "　"
-        # end
-        print index == command ? "＞" : "　"
-        puts menus[index]
-      end
+  # コマンドを表示する
+  puts "1: 攻撃"
+  puts "2: 回復"
+  puts "3: 逃走"
+  puts
 
-      require "io/console"
-      while (key = STDIN.getch) != "\C-c"
-        case key
-        when "\u0010" # Ctrl + P ↑
-          # command = command - 1
-          command = (command - 1) % menus.size
-          break
-        when "\u000e" # Ctrl + N ↓
-          # command = command + 1
-          command = (command + 1) % menus.size
-          break
-        when "\r" # Enter
-          throw :exit, command
-        end
-      end
-      system "clear"
-    end
-  end
+  # キーボードからの入力を一文字受け取る
+  require "io/console"
+  command = STDIN.getch.to_i
 
+  # コマンドに応じた行動
   case command
   when ATTACK
     puts "勇者の攻撃"
@@ -116,7 +79,7 @@ loop do
     system "clear"
     # 繰り返しを抜ける
     break if hp <= 0
-  when SPELL
+  when HEAL
     puts "勇者は回復呪文を唱えた"
     gets
     heal = rand(1..6)
@@ -124,7 +87,8 @@ loop do
     gets
     yusha_hp += heal
   when ESCAPE
-    puts "勇者は逃げ出した"
+    puts "勇者は急いで逃げ出した"
+    gets
     break # 繰り返しを抜ける
   end
 
