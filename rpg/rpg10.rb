@@ -58,6 +58,7 @@ loop do
         〜〜〜〜〜
         ＨＰ：#{hp}
       SLIME
+      gets
 
       # # コマンドを表示する
       # menus = ["戦う", "呪文", "逃げる"]
@@ -71,7 +72,7 @@ loop do
       # # end
       # # puts menus[command]
 
-      puts
+      # コマンドを表示する
       menus = ["攻撃", "呪文", "逃走"]
       # menus.each do |menu|
       #   puts menu
@@ -86,6 +87,7 @@ loop do
         puts menus[index]
       end
 
+      # キーボードからの入力を一文字受け取る
       require "io/console"
       while (key = STDIN.getch) != "\C-c"
         case key
@@ -105,6 +107,7 @@ loop do
     end
   end
 
+  # コマンドに応じた行動
   case command
   when ATTACK
     puts "勇者の攻撃"
@@ -124,7 +127,8 @@ loop do
     gets
     yusha_hp += heal
   when ESCAPE
-    puts "勇者は逃げ出した"
+    puts "勇者は急いで逃げ出した"
+    gets
     break # 繰り返しを抜ける
   end
 
