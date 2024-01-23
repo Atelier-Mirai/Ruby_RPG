@@ -1,0 +1,31 @@
+"*":
+  core:
+    automaticallyUpdate: true
+    destroyEmptyPanes: false
+    themes: [
+      "one-dark-ui"
+      "monokai"
+    ]
+    useExperimentalModernTreeSitter: true
+  editor:
+    defaultFontSize: 17
+    fontFamily: "HackGen, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 17
+    softWrap: true
+  "exception-reporting":
+    userId: "6******1-6**b-4**4-b**e-d**********5"
+  "linter-ui-default": {}
+  "tree-view": {}
+  welcome:
+    lastViewedChangeLog: "1.102.2023021605"
+    showChangeLog: false
+    showOnStartup: false
+  wordcount:
+    alwaysOn: true
+    showwords: false
+".gfm.source":
+  core:
+    useTreeSitterParsers: false
+".review.source":
+  editor:
+    autoIndentOnPaste: false

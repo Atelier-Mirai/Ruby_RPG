@@ -73,7 +73,7 @@ loop do
       # # puts menus[command]
 
       # コマンドを表示する
-      menus = ["攻撃", "呪文", "逃走"]
+      menus = ["攻撃", "回復", "逃走"]
       # menus.each do |menu|
       #   puts menu
       # end
