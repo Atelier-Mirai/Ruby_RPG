@@ -1,3 +1,6 @@
+# キーボードからの入力を一文字受け取る
+require "io/console"
+
 # カーソルを消す
 system "tput civis"
 # 画面の文字を消す
@@ -39,6 +42,15 @@ def puts_liveliness(hp, max_hp)
   end
 end
 
+# コマンドを表示するメソッド（関数）
+def puts_menus(command)
+  menus = ["攻撃", "回復", "逃走"]
+  menus.each.with_index do |menu, index|
+    print index == command ? "＞" : "　"
+    puts menus[index]
+  end
+end
+
 # 定数の定義
 ATTACK = 0
 HEAL   = 1
@@ -47,8 +59,8 @@ ESCAPE = 2
 # 倒すまで繰り返す
 loop do
   # 大域脱出
-  command = catch(:exit) do
-    command = 0
+  selection = catch(:exit) do
+    command = 0 # コマンドの初期値は攻撃
     loop do
       # スライムの活気度
       puts_liveliness(hp, max_hp)
@@ -58,46 +70,15 @@ loop do
         〜〜〜〜〜
         ＨＰ：#{hp}
       SLIME
-      gets
 
-      # # コマンドを表示する
-      # menus = ["戦う", "呪文", "逃げる"]
-      # puts menus[0]
-      # puts menus[1]
-      # puts menus[2]
-      # # if command == 0
-      # #   print "＞"
-      # # else
-      # #   print "　"
-      # # end
-      # # puts menus[command]
-
-      # コマンドを表示する
-      menus = ["攻撃", "回復", "逃走"]
-      # menus.each do |menu|
-      #   puts menu
-      # end
-      menus.each_with_index do |menu, index|
-        # if index == command
-        #   print "＞"
-        # else
-        #   print "　"
-        # end
-        print index == command ? "＞" : "　"
-        puts menus[index]
-      end
-
-      # キーボードからの入力を一文字受け取る
-      require "io/console"
+      puts_menus(command)
       while (key = STDIN.getch) != "\C-c"
         case key
         when "\u0010" # Ctrl + P ↑
-          # command = command - 1
-          command = (command - 1) % menus.size
+          command = (command - 1) % 3
           break
         when "\u000e" # Ctrl + N ↓
-          # command = command + 1
-          command = (command + 1) % menus.size
+          command = (command + 1) % 3
           break
         when "\r" # Enter
           throw :exit, command
@@ -107,8 +88,8 @@ loop do
     end
   end
 
-  # コマンドに応じた行動
-  case command
+  # 選択に応じた行動
+  case selection
   when ATTACK
     puts "勇者の攻撃"
     gets
